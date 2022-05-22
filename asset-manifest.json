@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/anantha5491/website/static/css/main.e6c13ad2.css",
-    "main.js": "/anantha5491/website/static/js/main.dafb894b.js",
+    "main.js": "/anantha5491/website/static/js/main.dd30ae95.js",
     "static/js/787.b21fe0ae.chunk.js": "/anantha5491/website/static/js/787.b21fe0ae.chunk.js",
     "static/media/Anantha.jpg": "/anantha5491/website/static/media/Anantha.57742434b778f6ee2176.jpg",
     "index.html": "/anantha5491/website/index.html",
     "main.e6c13ad2.css.map": "/anantha5491/website/static/css/main.e6c13ad2.css.map",
-    "main.dafb894b.js.map": "/anantha5491/website/static/js/main.dafb894b.js.map",
+    "main.dd30ae95.js.map": "/anantha5491/website/static/js/main.dd30ae95.js.map",
     "787.b21fe0ae.chunk.js.map": "/anantha5491/website/static/js/787.b21fe0ae.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.dafb894b.js"
+    "static/js/main.dd30ae95.js"
   ]
 }
