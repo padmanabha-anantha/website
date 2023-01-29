@@ -3,6 +3,9 @@ import { Card, CardActionArea, CardActions, CardContent, CardMedia, Collapse, Ty
 import { Box } from '@mui/system';
 import React, { useState } from 'react';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Link from '@mui/material/Link';
+{/*import CV from '../resources/CV-Anantha.pdf' */}
+
 
 export function Home() {
   // Declare a new state variable, which we'll call "count"
@@ -13,62 +16,46 @@ export function Home() {
   };
 
   return (
-    <Box sx={{ display: 'flex' , justifyContent: 'center'}}>
-    <Card sx={{ maxWidth:700 , width: {xs:350, md:700}}}>
-      <CardActionArea sx={{ alignItems: 'center'}}>
+    <Box sx={{ display: 'flex' , justifyContent: 'center' }}>
+    <Card sx={{ maxWidth:700 , width: {xs:350, md:700}, alignItems: 'center'}}>
+     
         <CardMedia
           component="img"
-          height="400"
-          image={require("../images/Anantha.jpg")}
+          height="500"
+          image={require("../images/Anantha.png")}
           
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            Anantha Padmanabha
-          </Typography>
-          <Typography variant="body1" color="text.secondary">
+          
+          <Typography variant="h6" >
           <p>
-            I am a Post Doctoral researcher at the  <a href="https://team.inria.fr/valda/" target="_blank" rel="noreferrer noopener">VALDA</a> team at <a href="https://www.ens.psl.eu/" target="_blank" rel="noreferrer noopener">ENS</a>, Paris 
-           with <a href="https://who.rocq.inria.fr/Luc.Segoufin/" target="_blank" rel="noreferrer noopener">Luc Segoufin</a>.
-          </p>
-          <p>
-          Before this, I was a Post Doctoral researcher at <a href="https://www.irif.fr/en/index" target="_blank" rel="noreferrer noopener"> IRIF</a>, Paris 
-          with <a href="https://www.irif.fr/~cristina/" target="_blank" rel="noreferrer noopener">Cristina Sirangelo</a>.
-          </p>
-          <p>
-            I did my PhD at <a href="https://www.imsc.res.in/" target="_blank" rel="noreferrer noopener">IMSc</a>, Chennai under the supervision of <a href="https://www.imsc.res.in/r_ramanujam" target="_blank" rel="noreferrer noopener" > R. Ramanujam</a>.
+            I am a Post Doctoral researcher at the <Link href="https://team.inria.fr/valda/" color="inherit" target="_blank" rel="noreferrer noopener">VALDA</Link> team at  <Link href="https://www.ens.psl.eu/" color="inherit" target="_blank" rel="noreferrer noopener">ENS, Paris</Link>. I am also a part-time faculty at <Link href="https://www.nyu.edu/paris.html" color="inherit" target="_blank" rel="noreferrer noopener">NYU (Paris campus) </Link>.
+            I did my PhD at <Link color="inherit" href="https://www.imsc.res.in/" target="_blank" rel="noreferrer noopener">IMSc, Chennai</Link>.
+            I am broadly interested in the connections between logic and computer science. 
+              
+            </p>
+            <p>
 
+            I am also passionate about teaching and learning new things. 
+            Apart from research I like to  solve puzzles.  
+            {/* <Link href={CV} target="_blank" rel="noreferrer noopener">Here</Link> is a link to my CV. */}
+          
           </p>
+            
           </Typography>
-          
-          
-        </CardContent>
-      </CardActionArea>
-      <CardActions disableSpacing>
-       Contact
-        <ExpandMore
-          expand={expanded}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </ExpandMore>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          
-          <Typography paragraph>
-          <p>DI, ENS Ulm, 45 rue d'Ulm, 75005 Paris, FRANCE </p>
-          <p>Escalier A, last floor</p>
-          <p> Tel : (33-1) ????</p>
-          <p>Email : ??? </p>
+          <Typography gutterBottom variant="h5" component="div" >
+            Contact
+          </Typography>
+          <Typography paragraph variant="h6">
+          DI, ENS Ulm, 45 rue d'Ulm, 75005 Paris, FRANCE 
+          Escalier A, last floor
+         <br></br>
+          Email : anantha(dot)padmanabha(at)inria(dot)fr
 
           </Typography>
-         
-         
         </CardContent>
-      </Collapse>
+      
+     
     </Card>
 
     </Box>

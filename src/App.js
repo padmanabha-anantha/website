@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useEffect } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -7,20 +7,32 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Routes, Route, useNavigate } from "react-router-dom";
-import Avatar from '@mui/material/Avatar';
+
 import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
+
 import MenuItem from '@mui/material/MenuItem';
 import { createTheme , ThemeProvider} from '@mui/material/styles';
 import Container from '@mui/material/Container';
 import { Home } from './Components/Home';
 import { Research } from './Components/Research';
 import { Teaching } from './Components/Teaching';
+import background from './images/backgroundWhite.jpeg'
+
+
+import ReactGA from 'react-ga';
+const TRACKING_ID = "UA-232449657-1"; // OUR_TRACKING_ID
+ReactGA.initialize(TRACKING_ID);
 
 
 const theme = createTheme({
   typography: {
     align: 'right',
+    fontFamily: [
+      'Chilanka',
+      'cursive',
+    ].join(','),
+    
+  
   },
   palette: {
     primary: {
@@ -42,7 +54,7 @@ const theme = createTheme({
 
 
 
-const ResponsiveAppBar = () => {
+const App = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -66,10 +78,16 @@ const ResponsiveAppBar = () => {
     setAnchorElUser(null);
   };
   const navigate = useNavigate();
+
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, []);
+
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme} >
+      
     <AppBar position="static">
-      <Container maxWidth="xl">
+      <Container maxWidth="xl" >
         <Toolbar disableGutters>
          
 
@@ -84,6 +102,15 @@ const ResponsiveAppBar = () => {
             >
               <MenuIcon />
             </IconButton>
+            
+          <Button
+                onClick={() => navigate('/')}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                <Typography variant="h5" component="div" sx={{mt:'7px'}}>
+            Anantha Padmanabha
+          </Typography>
+              </Button>
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
@@ -102,9 +129,7 @@ const ResponsiveAppBar = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-               <MenuItem  onClick={() => handleCloseNavMenuAndNavigate('/')}>
-                  <Typography textAlign="center">Home</Typography>
-                </MenuItem>
+              
                 <MenuItem  onClick={() => handleCloseNavMenuAndNavigate('/research')}>
                   <Typography textAlign="center">Research</Typography>
                 </MenuItem>
@@ -114,28 +139,33 @@ const ResponsiveAppBar = () => {
             
             </Menu>
           </Box>
-         
-          <Box sx={{ flexGrow: 1, justifyContent: 'flex-end', display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ flexGrow: 1, justifyContent: 'flex-start', display: { xs: 'none', md: 'flex' } }}>
           <Button
                 onClick={() => navigate('/')}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                Home
-              </Button>
-            
+          <Typography gutterBottom variant="h5" component="div">
+            Anantha Padmanabha
+          </Typography>
+          </Button>
+            </Box>
+           
+          <Box sx={{ flexGrow: 1, justifyContent: 'flex-end', display: { xs: 'none', md: 'flex' } }}>
+        
               <Button
                 onClick={() => navigate('/research')}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                Research
+                 <Typography variant="h6" textAlign="center">Research</Typography>
               </Button>
               <Button
                 
                 onClick={() => navigate('/teaching')}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                Teaching
+                 <Typography variant="h6" textAlign="center">Teaching</Typography>
               </Button>
+
           
           </Box>
 
@@ -143,14 +173,15 @@ const ResponsiveAppBar = () => {
         </Toolbar>
       </Container>
     </AppBar>
-    
+    <Box sx={{ display: 'flex',  justifyContent: 'center', backgroundImage:`url(${background})` 
+    ,backgroundRepeat: 'no-repeat', backgroundSize:'cover',minHeight:'100vh', minWidth:'100%'}}>
     <Routes>
         <Route path="/" element={<Home />} />
         <Route path="research" element={<Research/>} />
         <Route path="teaching" element={<Teaching/>} />
       </Routes>
-    
+    </Box>
     </ThemeProvider>
   );
 };
-export default ResponsiveAppBar;
+export default App;
