@@ -85,10 +85,8 @@ export function Teaching() {
             </p>
 
             <p>
-              I have been involved in translating some of the posters designed by Varuni et al,
-              at the Institute of Mathematical Sciences into Kannada. Also, we (with Sahana LV)
-              have translated the English version of a short article by Kamal Lodaya and Hari Dass
-              on <Link href="https://www.imsc.res.in/~kamal/sci/ecl20.pdf" color="inherit" target="_blank" rel="noreferrer noopener">Annular olar Eclipse </Link>
+               We have translated the English version of a short article
+              on <Link href="https://www.imsc.res.in/~kamal/sci/ecl20.pdf" color="inherit" target="_blank" rel="noreferrer noopener">Annular Solar Eclipse </Link>
               into Kannada.
 
             </p>

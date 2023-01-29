@@ -6,6 +6,7 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemIcon from '@mui/material/ListItemIcon';
 
+import { InlineTex } from 'react-tex';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import { Box } from '@mui/system';
@@ -58,6 +59,8 @@ export function Research() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  
 
   return (
     <Box sx={{ display: 'flex' , flexDirection: 'column', alignItems:'center'}}>
@@ -192,9 +195,22 @@ export function Research() {
         <AccordionDetails>
           <Typography variant="subtitle1"
                 textAlign="justify">
-          
+              <p>
+              First order modal logic (FOML) is built by extending First Order Logic (FO) with modal operators. A typical 
+              formula is of the form ∀x∃y□P(x,y). Not only is FOML undecidable, even simple fragments like that of 
+              restriction to unary predicate symbols, guarded fragment and two variable fragment, which are all decidable for 
+              FO become undecidable for FOML. In this paper we study Term Modal logic (TML) which allows modal 
+              operators to be indexed by terms. A typical formula in TML is of the form  
+              ∀x∃y□<sub>x</sub> P(x,y). There is a close correspondence
+              between TML and FOML and we explore this relationship in detail in the paper. 
+              </p>
+              <p>
+                In contrast to FOML, we show that the two variable fragment (without constants, equality) of TML is
+                decidable. Further, we prove that adding a single constant makes the two variable fragment of TML undecidable.
+                On the other hand, when equality is added to the logic, it looses the finite model property.
+              </p>
 
-             This is the journal version of MFCS, 2018 paper.
+             This is the journal version of MFCS, 2019 paper.
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -223,7 +239,7 @@ export function Research() {
           <Typography variant="subtitle1"
                 textAlign="justify">
           <p> Bundled products are often offered as good deals to customers. 
-            When we bundle quantifiers and modalities together (as in ∃x􏰀, ♢∀x etc.) in first-order modal logic (FOML), 
+            When we bundle quantifiers and modalities together (as in  ∃x□, ∀x◇  etc.) in first-order modal logic (FOML), 
             we get new logical operators whose combinations produce interesting fragments of FOML without any restriction
              on the arity of predicates, the number of variables, or the modal scope. It is well-known that finding 
              decidable fragments of FOML is hard, so we may ask: do bundled fragments that exploit the distinct 
