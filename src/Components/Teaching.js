@@ -65,16 +65,17 @@ export function Teaching() {
         <CardContent>
 
           <Typography fontSize="19px" textAlign="justify">
-            <p>  I am a part-time faculty at <Link href="https://www.nyu.edu/paris.html" color="inherit" target="_blank" rel="noreferrer noopener">NYU (Paris campus) </Link>
-              where I typically  offer a course each semester on Database Management for undergraduate students.
+            <p>  I was a part-time faculty at
+              <Link href="https://www.nyu.edu/paris.html" color="inherit" target="_blank"
+                    rel="noreferrer noopener">New York University (Paris campus) </Link>
+              January, 2022 to May 2023 where I used to offer a course every semester on Database Management
+              for undergraduate students.
             </p>
 
             <p>
               I was involved in organizing summer schools at the Institute of Mathematical Sciences, Chennai
               aimed at undergraduate and graduate students where I have taught various topics in
               theoretical computer science.
-            </p>
-            <p>
               I have also designed and taught a short course at Indian Institute of Science,
               Bangalore on ‘Proofs in First Order Logic’ under the <Link href="https://siddhartha-gadgil.github.io/TrainLogic/index.html#" color="inherit" target="_blank" rel="noreferrer noopener">TrainLogic</Link> program.
 
@@ -82,12 +83,9 @@ export function Teaching() {
             <p>
 
               I was a co-organizer of the 2nd conference on  <Link href="https://www.imsc.res.in/~cmsc2014/" color="inherit" target="_blank" rel="noreferrer noopener">Creative Mathematical Sciences Communication </Link>.
-            </p>
-
-            <p>
                We have translated the English version of a short article
-              on <Link href="https://www.imsc.res.in/~kamal/sci/ecl20.pdf" color="inherit" target="_blank" rel="noreferrer noopener">Annular Solar Eclipse </Link>
-              into Kannada.
+              on <Link href="https://www.imsc.res.in/~kamal/sci/ecl20.pdf" color="inherit" target="_blank" rel="noreferrer noopener">Annular Solar Eclipse</Link>
+              &nbsp;into Kannada.
 
             </p>
           </Typography>
@@ -108,7 +106,7 @@ export function Teaching() {
             <ListItem alignItems="flex-start">
 
               <ListItemText
-                primary={<Typography variant="h6">Data Management and Analysis (Ongoing)</Typography>}
+                primary={<Typography variant="h6">Data Management and Analysis</Typography>}
                 secondary={
                   <Typography
                     variant="subtitle1"

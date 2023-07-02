@@ -28,11 +28,23 @@ export function Home() {
         <CardContent>
           
           <Typography variant="h6" >
+            <p>
+              I am an assistant professor at&nbsp;
+               <Link href="https://www.iitdh.ac.in/" color="inherit" target="_blank" rel="noreferrer noopener">IIT, Dharwad</Link>&nbsp;
+               in the <Link href="https://www.iitdh.ac.in/cse.php" color="inherit" target="_blank" rel="noreferrer noopener"> Department of Computer Science and Engineering</Link>.
+              I am broadly interested in understanding the role of mathematical logic in computer science.
+            </p>
           <p>
-            I am a Post Doctoral researcher at the <Link href="https://team.inria.fr/valda/" color="inherit" target="_blank" rel="noreferrer noopener">VALDA</Link> team at  <Link href="https://www.ens.psl.eu/" color="inherit" target="_blank" rel="noreferrer noopener">ENS, Paris</Link>. I am also a part-time faculty at <Link href="https://www.nyu.edu/paris.html" color="inherit" target="_blank" rel="noreferrer noopener">NYU (Paris campus) </Link>.
-            I did my PhD at <Link color="inherit" href="https://www.imsc.res.in/" target="_blank" rel="noreferrer noopener">IMSc, Chennai</Link>.
-            I am broadly interested in the connections between logic and computer science. 
-              
+            I was a Post Doctoral researcher at the &nbsp;
+            <Link href="https://team.inria.fr/valda/" color="inherit"
+                  target="_blank" rel="noreferrer noopener">VALDA</Link> team at &nbsp;
+            <Link href="https://www.ens.psl.eu/"
+                  color="inherit" target="_blank" rel="noreferrer noopener">Ecole Normale Superieure</Link>, Paris (from Jaunary 2022 to June 2023) and
+            at the <Link href="https://www.irif.fr/en/index" color="inherit"
+                         target="_blank" rel="noreferrer noopener">Institut de Recherche en Informatique Fondamentale</Link>, Paris
+              (from Jaunary 2020 to December 2021).
+            I did my PhD at the <Link color="inherit" href="https://www.imsc.res.in/" target="_blank" rel="noreferrer noopener">Institute of Mathematical Sciences</Link>, Chennai.
+            I was also a part-time faculty at the <Link href="https://www.nyu.edu/paris.html" color="inherit" target="_blank" rel="noreferrer noopener">New York University (Paris campus)</Link>&nbsp; (from January 2022 to May 2023).
             </p>
             <p>
 
@@ -47,11 +59,11 @@ export function Home() {
             Contact
           </Typography>
           <Typography paragraph variant="h6">
-          DI, ENS Ulm, 45 rue d'Ulm, 75005 Paris, FRANCE 
-          Escalier A, last floor
+          Office 2A7, Indian Institute of Technology, Dharwad 580011
          <br></br>
-          Email : anantha(dot)padmanabha(at)inria(dot)fr
-
+          Email : <br></br>
+            ananthap(at)iitdh(dot)ac(dot)in<br></br>
+            anantha(dot)5491(at)gmail(dot)com
           </Typography>
         </CardContent>
       
