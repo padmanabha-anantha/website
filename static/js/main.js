@@ -56,13 +56,14 @@
   }
 
   // Tabs (Others page) with animated sliding indicator
-  var tabsWrap = document.querySelector(".tabs");
-  if (tabsWrap) {
-    var buttons = Array.from(tabsWrap.querySelectorAll("button"));
+  var tabsEl = document.querySelector(".tabs");
+  if (tabsEl) {
+    var outerWrap = tabsEl.closest(".tabs-wrap");
+    var buttons = Array.from(tabsEl.querySelectorAll("button"));
     var panels = Array.from(document.querySelectorAll(".panel"));
     var indicator = document.createElement("span");
     indicator.className = "tab-indicator";
-    tabsWrap.appendChild(indicator);
+    tabsEl.appendChild(indicator);
 
     function moveIndicator(btn) {
       indicator.style.width = btn.offsetWidth + "px";
@@ -76,20 +77,35 @@
       var panel = document.getElementById(btn.dataset.tab);
       if (panel) panel.classList.add("active");
       moveIndicator(btn);
+      btn.scrollIntoView({ behavior: "smooth", inline: "nearest", block: "nearest" });
     }
 
     buttons.forEach(function (btn) {
       btn.addEventListener("click", function () { activate(btn); });
     });
 
-    var initial = tabsWrap.querySelector("button.active") || buttons[0];
+    var initial = tabsEl.querySelector("button.active") || buttons[0];
     requestAnimationFrame(function () {
       if (initial) moveIndicator(initial);
     });
     window.addEventListener("resize", function () {
-      var current = tabsWrap.querySelector("button.active");
+      var current = tabsEl.querySelector("button.active");
       if (current) moveIndicator(current);
+      updateScrollFades();
     });
+
+    // Edge-fade scroll affordance: a hidden scrollbar gives no clue the
+    // tab row scrolls, especially on mobile, so fade classes make the
+    // cut-off edge visible whenever there is more content that way.
+    function updateScrollFades() {
+      if (!outerWrap) return;
+      var max = tabsEl.scrollWidth - tabsEl.clientWidth;
+      outerWrap.classList.toggle("can-scroll-left", tabsEl.scrollLeft > 4);
+      outerWrap.classList.toggle("can-scroll-right", tabsEl.scrollLeft < max - 4);
+    }
+
+    tabsEl.addEventListener("scroll", updateScrollFades, { passive: true });
+    requestAnimationFrame(updateScrollFades);
   }
 
   // Copy email button

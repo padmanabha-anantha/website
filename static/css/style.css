@@ -219,15 +219,36 @@ a:hover {
   height: var(--header-h);
   display: flex;
   align-items: center;
-  transition: background 0.35s var(--ease), border-color 0.35s var(--ease), box-shadow 0.35s var(--ease);
   border-bottom: 1px solid transparent;
+  transition: border-color 0.35s var(--ease);
+}
+
+/*
+ * The blur/background live on a pseudo-element rather than directly on
+ * .site-header. backdrop-filter (like transform/filter) on an element
+ * creates a new containing block for its fixed-position descendants —
+ * and .nav-links (the mobile menu panel) is `position: fixed` inside
+ * this header. Putting it on .site-header itself would make the
+ * full-screen mobile menu resize against the ~78px header box instead
+ * of the viewport as soon as the page scrolls.
+ */
+.site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: transparent;
+  transition: background 0.35s var(--ease), box-shadow 0.35s var(--ease);
 }
 
 .site-header.is-scrolled {
+  border-bottom-color: var(--border);
+}
+
+.site-header.is-scrolled::before {
   background: rgba(5, 6, 15, 0.72);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-  border-bottom-color: var(--border);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
@@ -847,18 +868,92 @@ a:hover {
    Tabs (Others page)
    -------------------------------------------------------------------------- */
 
+.tabs-wrap {
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+  margin: 26px 0 30px;
+}
+
 .tabs {
   position: relative;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 6px;
   padding: 6px;
   border-radius: 999px;
   background: var(--surface);
   border: 1px solid var(--border);
-  margin: 26px 0 30px;
-  width: fit-content;
-  max-width: 100%;
+  width: 100%;
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/*
+ * .tab-indicator is a single absolutely-positioned pill that only
+ * translates on the X axis (see main.js), so the row must never wrap —
+ * a wrapped button on row 2 would leave the highlight pill stranded on
+ * row 1. Overflow-scroll instead of wrap keeps this a true single row
+ * at every width, including when labels like "Program Committee
+ * Member" don't fit a narrow viewport.
+ */
+.tabs::-webkit-scrollbar {
+  display: none;
+}
+
+/*
+ * Edge fades signal there's more to scroll — a hidden scrollbar alone
+ * gives mobile users no clue the tab row scrolls. main.js toggles
+ * .can-scroll-left/-right on .tabs-wrap based on actual scroll
+ * position. A static chevron glyph (no motion) makes the cue legible
+ * at a glance instead of relying on an attention-grabbing animation.
+ */
+.tabs-wrap::before,
+.tabs-wrap::after {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 1px;
+  bottom: 1px;
+  width: 60px;
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0;
+  color: #050614;
+  font-size: 1.7rem;
+  font-weight: 800;
+  transition: opacity 0.25s var(--ease);
+}
+
+.tabs-wrap::before {
+  content: "\2039";
+  left: 1px;
+  justify-content: flex-start;
+  padding-left: 8px;
+  border-radius: 999px 0 0 999px;
+  background:
+    radial-gradient(circle 19px at 19px center, var(--accent-2) 0%, var(--accent-2) 65%, transparent 78%),
+    linear-gradient(90deg, var(--bg) 60%, transparent 100%);
+}
+
+.tabs-wrap::after {
+  content: "\203A";
+  right: 1px;
+  justify-content: flex-end;
+  padding-right: 8px;
+  border-radius: 0 999px 999px 0;
+  background:
+    radial-gradient(circle 19px at calc(100% - 19px) center, var(--accent-2) 0%, var(--accent-2) 65%, transparent 78%),
+    linear-gradient(270deg, var(--bg) 60%, transparent 100%);
+}
+
+.tabs-wrap.can-scroll-left::before {
+  opacity: 1;
+}
+
+.tabs-wrap.can-scroll-right::after {
+  opacity: 1;
 }
 
 .tabs button {
@@ -894,11 +989,7 @@ a:hover {
 @media (max-width: 640px) {
   .tabs {
     width: 100%;
-    overflow-x: auto;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
   }
-  .tabs::-webkit-scrollbar { display: none; }
 }
 
 .panel {
